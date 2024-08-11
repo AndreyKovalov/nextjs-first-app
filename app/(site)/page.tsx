@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import { Htag } from "@/components/Htag/Htag";
 import { Button } from "@/components/Button/Button";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <main className={styles.main}>
       <Htag tag="h1">Htag</Htag>

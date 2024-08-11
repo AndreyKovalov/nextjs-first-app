@@ -1,4 +1,4 @@
 {
   "extends": ["next", "prettier", "eslint:recommended"],
-  "globals": { "React": true }
+  "globals": { "React": true, "JSX": true }
 }
