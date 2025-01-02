@@ -1,7 +1,9 @@
 import { MenuItem } from "@/interfaces/menu.interface";
 import { API } from "./api";
 
-export async function getMenu(firstCategory: number): Promise<MenuItem[]> {
+export async function getMenu(
+  firstCategory: number
+): Promise<MenuItem[] | null> {
   const res = await fetch(API.topPage.find, {
     method: "POST",
     headers: {
@@ -11,9 +13,7 @@ export async function getMenu(firstCategory: number): Promise<MenuItem[]> {
   });
 
   if (!res.ok) {
-    throw new Error(
-      `Could not fetch ${API.topPage.find}, received ${res.status}`
-    );
+    return null;
   }
 
   return res.json();
