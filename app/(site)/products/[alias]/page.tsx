@@ -7,19 +7,16 @@ export const metadata: Metadata = {
   title: "Product page",
 };
 
-export async function generateStaticParams(): Promise<{ alias: string }[]> {
+export async function generateStaticParams() {
   const menu = await getMenu(0);
-  if (!menu) return [];
-  return menu.flatMap((item) =>
-    item.pages.map((page) => ({ alias: page.alias }))
-  );
+  return menu.flatMap((m) => m.pages.map((p) => ({ alias: p.alias })));
 }
 
-export default async function ProductsPage({
+export default async function PageProduct({
   params,
 }: {
   params: { alias: string };
-}): Promise<JSX.Element> {
+}) {
   const page = await getPage(params.alias);
   if (!page) return notFound();
   return <div>{page.title}</div>;

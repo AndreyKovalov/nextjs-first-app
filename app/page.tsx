@@ -1,11 +1,11 @@
-import Menu from "@/components/Menu/Menu";
 import styles from "./page.module.css";
+import { Raiting } from "@/components/ui/Raiting/Raiting";
 
 export default function Home(): JSX.Element {
   return (
     <div className={styles.main}>
       Main Page
-      <Menu />
+      <Raiting isEditable={true} rating={3} />
     </div>
   );
 }
