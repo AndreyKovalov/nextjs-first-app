@@ -1,16 +1,17 @@
 import { Menu } from "@/components/Menu/Menu";
 import { SideBarProps } from "./SideBar.props";
-import { getMenu } from "@/app/api/menu";
 import { Suspense } from "react";
+import { getMenuData } from "@/helpers/helpers";
 
 export const SideBar = async ({
   ...props
 }: SideBarProps): Promise<JSX.Element> => {
-  const menu = await getMenu(0);
+  const menuData = await getMenuData();
+
   return (
     <div {...props}>
       <Suspense fallback={<div>Loading...</div>}>
-        <Menu data={menu} />
+        <Menu allMenus={menuData} />
       </Suspense>
     </div>
   );

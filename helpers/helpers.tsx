@@ -1,10 +1,11 @@
-import { FirstLevelMenuItem } from "@/interfaces/menu.interface";
+import { FirstLevelMenuItem, MenuItem } from "@/interfaces/menu.interface";
 import { TopLevelCategory } from "@/interfaces/page.interface";
 
 import CoursesIcon from "./icons/courses.svg";
 import ServicesIcon from "./icons/services.svg";
 import BooksIcon from "./icons/books.svg";
 import ProductsIcon from "./icons/product.svg";
+import { getMenu } from "@/app/api/menu";
 
 export const firstLevelMenu: FirstLevelMenuItem[] = [
   {
@@ -32,3 +33,15 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
     id: TopLevelCategory.Products,
   },
 ];
+
+export async function getMenuData() {
+  const categories = Object.values(TopLevelCategory);
+  const menuPromises = categories.map((category) => getMenu(Number(category)));
+  const menus = await Promise.all(menuPromises);
+  const menusByCategory = categories.reduce((acc, category, index) => {
+    acc[Number(category)] = menus[index];
+    return acc;
+  }, {} as { [key: number]: MenuItem[] | null });
+
+  return menusByCategory;
+}

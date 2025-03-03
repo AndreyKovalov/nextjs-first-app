@@ -18,17 +18,17 @@
   color: var(--primary);
 }
 
-.secondLevel.active {
-  color: var(--primary) !important;
-}
-.thirdLevel.active {
-  color: var(--primary) !important;
+.secondLevel.active,
+.thirdLevel.active,
+.firstLevel.active {
+  color: var(--primary);
 }
 
 .secondLevelList {
   padding-left: 32px;
   display: grid;
   gap: 13px;
+  margin-bottom: 30px;
 }
 
 .secondLevel {
