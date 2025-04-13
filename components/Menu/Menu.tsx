@@ -101,8 +101,9 @@ export function Menu({ allMenus }: MenuProps): JSX.Element {
             href={`/${menu.route}`}
             className={cn(styles.firstLevel, {
               [styles.active]:
-                selectedCategory !== null &&
-                pathname.includes(`/${menu.route}`),
+                selectedCategory === menu.id ||
+                (selectedCategory !== null &&
+                  pathname.includes(`/${menu.route}`)),
             })}
             onClick={() => toggleCategory(menu.id)}
           >

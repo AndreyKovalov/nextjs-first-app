@@ -18,10 +18,18 @@
   color: var(--primary);
 }
 
+.firstLevel:hover svg g {
+  fill: var(--primary);
+}
+
 .secondLevel.active,
 .thirdLevel.active,
 .firstLevel.active {
   color: var(--primary);
+}
+
+.firstLevel.active svg g {
+  fill: var(--primary);
 }
 
 .secondLevelList {

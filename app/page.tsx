@@ -5,7 +5,7 @@ export default function Home(): JSX.Element {
   return (
     <div className={styles.main}>
       Main Page
-      <Raiting isEditable={true} rating={3} />
+      <Raiting isEditable={true} rating={2} />
     </div>
   );
 }
